@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ads Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      background: #0f172a;
+      color: white;
+      font-family: Arial;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .cards {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+    .card {
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 10px;
+      width: 150px;
+      text-align: center;
+    }
+    .best {
+      border: 2px solid lime;
+    }
+  </style>
+</head>
+<body> <h2>📈 Budget Simulator</h2>
+
+<input type="range" id="budget" min="500" max="3000" value="1000">
+<p>Budget: $<span id="budgetValue">1000</span></p>
+
+<p>Estimated Installs: <span id="installs">2000</span></p>
+<p>Estimated Revenue: <span id="revenue">3000</span></p>
+
+<h1>📊 Campaign Dashboard</h1>
+
+<div class="cards">
+  <div class="card">A<br>CPI: 0.5<br>ROAS: 3.0</div>
+  <div class="card">B<br>CPI: 0.53<br>ROAS: 2.5</div>
+  <div class="card best">C<br>CPI: 0.41<br>ROAS: 4.2 ⭐</div>
+</div>
+
+<canvas id="chart" width="400" height="200"></canvas>
+
+<script>const budgetSlider = document.getElementById("budget");
+const budgetValue = document.getElementById("budgetValue");
+const installs = document.getElementById("installs");
+const revenue = document.getElementById("revenue");
+
+budgetSlider.oninput = function() {
+  let budget = this.value;
+  budgetValue.innerText = budget;
+
+  let cpi = 0.5; // pakai campaign A contoh
+  let roas = 3;
+
+  let estInstall = budget / cpi;
+  let estRevenue = estInstall * roas;
+
+  installs.innerText = Math.round(estInstall);
+  revenue.innerText = Math.round(estRevenue);
+};
+const ctx = document.getElementById('chart');
+
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['A', 'B', 'C'],
+    datasets: [{
+      label: 'ROAS',
+      data: [3.0, 2.5, 4.2]
+    }]
+  }
+});
+</script>
+
+</body>
+</html>
