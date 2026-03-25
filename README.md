@@ -29,7 +29,7 @@ An interactive dashboard to analyze and simulate mobile advertising campaign per
 
 ## 🌐 Live Demo
 
-[(Add your GitHub Pages link here)](https://github.com/fandiyoku-netizen/Ads-Dashboard/tree/main)
+https://github.com/fandiyoku-netizen/Ads-Dashboard/blob/main/README.md
 
 ## 💡 Use Case
 
